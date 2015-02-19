@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, Nordic Semiconductor
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  ~
+  ~ 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~
+  ~ 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
+  ~ documentation and/or other materials provided with the distribution.
+  ~
+  ~ 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
+  ~ software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  ~ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  ~ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  ~ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+  ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+  ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+<resources>
+
+    <string name="app_name">nRF Beacon</string>
+    <string name="beacon_feature_title">Beacons</string>
+    <string name="beacon_config_title">Beacon config</string>
+    <string name="beacon_settings_title">Settings</string>
+    
+    <string name="font_path">fonts/trebucbd.ttf</string>
+    <string name="normal_font_path">fonts/trebuc.ttf</string>
+    
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="action_default">Default</string>
+    
+    <string name="permission_label_run_task">allows the application to ask Tasker to run both user-defined and its own tasks</string>
+    <string name="permission_descr_run_tasks">run Tasker tasks</string>
+    
+    <string name="beacon_config">BEACON CONFIG</string>
+    <string name="beacon_update">BEACON UPDATE</string>
+    <string name="beacon_dfu">DEVICE FIRMWARE UPDATE</string>
+    
+    <string name="permission_log_label">read and write log</string>
+    <string name="permission_log_description">Allows the app to write and read from Nordic Semiconductor Event log</string>
+    
+    <string name="service_name">Beacon Config service</string>
+    <string name="service_description">Connects to beacons in Config Mode.</string>
+    <string name="service_dfu_name">Beacon DFU service</string>
+    <string name="service_dfu_description">Handles the DFU operation.</string>
+    <string name="service_required_title">Service not found</string>
+    <string name="service_required_message">You must install <b>nRF Beacon Service</b> application in order to use this application.</string>
+    <string name="service_required_store">Open Google Play</string>
+    
+    <string name="action_settings">Settings</string>
+    <string name="action_remove">Remove beacon</string>
+    <string name="action_about">Help</string>
+    <string name="action_connect">CONNECT</string>
+    <string name="action_select">SELECT DEVICE</string>
+    <string name="action_disconnect">DISCONNECT</string>
+
+    <string name="no_sensors_stored">You have 0 beacons active.</string>
+    <string name="no_ble">Device doesn\'t have BLE support!</string>
+    <string name="scanning">Scanning&#8230;</string>
+    <string name="scanning_info">Tap the beacon to add or edit</string>
+    <string name="far">Far</string>
+    <string name="near">Near</string>
+    <string name="close">At beacon</string>
+    
+    <string-array name="tab_title">
+        <item>Beacons</item>
+        <item>Update</item>
+        <item>DFU</item>
+    </string-array>
+    
+    <string name="default_beacon_name">nRF Beacon</string>
+
+    <string name="settings_name_hint">Enter beacon name</string>
+    <string name="settings_identity_title">IDENTITY</string>
+    <string name="settings_uuid">UUID</string>
+    <string name="settings_major">MAJOR</string>
+    <string name="settings_minor">MINOR</string>
+    <string name="settings_notify_title">NOTIFY</string>
+    <string name="settings_event">EVENT</string>
+    <string name="settings_action">ACTION</string>
+    <string name="settings_action_param_url">WEB URL</string>
+    <string name="settings_action_param_app">APPLICATION</string>
+    <string name="settings_action_param_task">TASK</string>
+    <string name="settings_status_title">STATUS</string>
+    <string name="settings_enabled">ENABLED</string>
+    
+    <string name="url_error">The given URL is not valid.</string>
+    <string name="no_application">Web Browser application is not available.</string>
+    <string name="not_available">n/a</string>
+    <string name="progress">%d%%</string>
+    
+    <string-array name="settings_events">
+        <item>Out of range</item>
+        <item>In range</item>
+        <item>Near</item>
+        <item>At beacon</item>
+    </string-array>
+    
+    <string-array name="settings_actions">
+        <item>Show Mona Lisa</item>
+        <item>Open website</item>
+        <item>Open application</item>
+        <item>Play alarm</item>
+        <item>Silent phone</item>
+        <item>Tasker</item>
+    </string-array>
+    <string name="action_tasker_default">Select task</string>
+    <string name="action_tasker_download">Buy/try Tasker</string>
+    <string name="action_tasker_message">Tasker is an application for Android which performs tasks (sets of actions) based on contexts (application, time, date, location, event, gesture) in user-defined profiles or in clickable or timer home screen widgets.
+\n\nnRF Beacon may use Beacons to trigger the task you specify.</string>
+	<string name="download">Google Play</string>
+	<string name="website">Download trial</string>
+	<string name="tasker_not_installed">Tasker application was uninstalled.</string>
+	<string name="tasker_error">An error occurred when launching the task.</string>
+	<string name="tasker_success">The task has been executed.</string>
+	<string name="tasker_disabled">Tasker is disabled.</string>
+	<string name="tasker_external_access_denided">External access to Tasker is disabled. See Preferences -> MISC -> Allow External Access in the Tasker.</string>
+    
+    <string name="monalisa_title">Mona Lisa</string>
+    <string name="monalisa_info">The <b>Mona Lisa</b> (<b>Monna Lisa</b> or <b>La Gioconda</b> in Italian; <b>La Joconde</b> in French) is a half-length portrait of a woman by the Italian artist Leonardo da Vinci, which has been acclaimed as "the best known, the most visited, the most written about, the most sung about, the most parodied work of art in the world."</string>
+    
+    <string name="alarm_notification_title">Alarm!</string>
+    <string name="alarm_notification_message">%s has triggered an alarm.</string>
+    
+    <string name="update_about_title">Information</string>
+    <string name="update_about_message_dfu">To enter the DFU Mode, please press the SW1 button for 1 second.</string>
+    <string name="update_about_message_update">Please, press the SW2 button on the beacon to enter the Config Mode.</string>
+    
+    <string name="scanner_title">Select device:</string>
+    <string name="scanner_empty">No device found</string>
+    <string name="scanner_action_scan">Scan</string>
+    <string name="scanner_action_cancel">Cancel</string>
+    <string name="scanner_subtitle__not_bonded">AVAILABLE DEVICES:</string>
+    
+    <string name="update_title">MODIFY BEACON PROPERTIES</string>
+    <string name="update_uuid">UUID</string>
+    <string name="update_major">MAJOR</string>
+    <string name="update_minor">MINOR</string>
+    <string name="update_rssi">CALIBRATED RSSI</string>
+    <string name="update_rssi_unit">dBm</string>
+    <string name="update_advanced_title">ADVANCED</string>
+    <string name="update_manufacturer_id">MANUFACTURER ID</string>
+    <string name="update_adv_interval">ADV. INTERVAL</string>
+    <string name="update_adv_interval_unit">ms</string>
+    <string name="update_led">LED ENABLED</string>
+    <string name="update_error_device_not_supported">Required service has not been found. Restart Bluetooth and try again.</string>
+    <string name="update_error_other">Error %d occurred.</string>
+    
+    <string name="update_dialog_uuid_title">Service UUID</string>
+    <string name="update_dialog_uuid_fixed_text">Common UUIDs:</string>
+    <string name="update_dialog_uuid_last_text">Previously used UUID:</string>
+    <string name="update_dialog_uuid_custom_text">Specify the custom UUID:</string>
+    <string name="update_dialog_uuid_hint">UUID</string>
+    <string name="update_dialog_uuid_error">The UUID is not valid.</string>
+    
+    <string name="update_dialog_major_minor_title">Major and Minor</string>
+    <string name="update_dialog_major_minor_text">Please provide the new Major and Minor numbers of the Beacon.</string>
+    <string name="update_dialog_major_hint">The Major number</string>
+    <string name="update_dialog_minor_hint">The Minor number</string>
+    <string name="update_dialog_major_minor_error">Only values between 0 and 65535 are allowed.</string>
+    
+    <string name="update_dialog_rssi_title">RSSI</string>
+    <string name="update_dialog_rssi_text">Enter the RSSI value to calibrate distance estimation. Typical values are in range from -73 to -60 dBm.</string>
+    <string name="update_dialog_rssi_hint">RSSI in dBm</string>
+    <string name="update_dialog_rssi_error">Only values between -127 and 20 are allowed.</string>
+    
+    <string name="update_dialog_manufacturer_id_title">Manufacturer ID</string>
+    <string name="update_dialog_manufacturer_id_text">Enter the Company Identifier assigned by SIG (decimal).</string>
+    <string name="update_dialog_manufacturer_id_hint">Company Identifier</string>
+    <string name="update_dialog_manufacturer_id_error">The value is invalid.</string>
+    
+    <string name="update_dialog_adv_interval_title">Advertising Interval</string>
+    <string name="update_dialog_adv_interval_text">Enter the beacon advertising interval in milliseconds.</string>
+    <string name="update_dialog_adv_interval_hint">Advertising interval in ms</string>
+    <string name="update_dialog_adv_interval_error">The value must be in range &lt;100 &#8211; 10240 ms&gt;</string>
+    
+    <string name="dfu_example_files_created">Example HEX files were copied to /sdcard/Nordic Semiconductor.</string>
+    
+    <string name="dfu_section_application_header">APPLICATION</string>
+    <string name="dfu_file_name_label">File Name:</string>
+    <string name="dfu_file_type_label">File Type:</string>
+    <string name="dfu_file_size_label">File Size:</string>
+    <string name="dfu_file_status_label">Status:</string>
+    <string name="dfu_file_size_text">%d bytes</string>
+    <string name="dfu_file_status_ok">OK</string>
+    <string name="dfu_file_status_no_file">File not loaded</string>
+    <string name="dfu_file_status_invalid">Invalid file</string>
+    <string name="dfu_file_status_ok_with_init">OK (Init file selected)</string>
+    <string name="dfu_file_status_error">Reading file failed</string>
+    <string name="dfu_file_status_invalid_message">Please, select valid HEX file</string>
+    <string name="dfu_file_info">Info</string>
+    
+    <string name="dfu_action_select_file">SELECT FILE</string>
+    
+    <string name="dfu_alert_no_filebrowser_title">File Browser not found</string>
+    <string name="dfu_alert_no_filebrowser_message">File browser application has not been found on your device. Would you like to download one?</string>
+    <string-array name="dfu_app_file_browser">
+        <item>Drive</item>
+        <item>File Manager</item>
+        <item>Total Commander</item>
+        <item>Search for others</item>
+    </string-array>
+    <string-array name="dfu_app_file_browser_action">
+        <item>market://details?id=com.google.android.apps.docs</item>
+        <item>market://details?id=com.rhmsoft.fm</item>
+        <item>market://details?id=com.ghisler.android.TotalCommander</item>
+        <item>market://search?q=file manager</item>
+    </string-array>
+    
+    <string name="dfu_section_dfu_header">DEVICE FIRMWARE UPDATE</string>
+    <string name="dfu_action_upload">UPLOAD</string>
+    <string name="dfu_action_upload_cancel">CANCEL</string>
+    
+    <string name="dfu_settings_dfu">DFU options</string>
+    <string name="dfu_settings_dfu_packets_receipt_notification_label">Packets receipt notification procedure</string>
+    <string name="dfu_settings_dfu_number_of_packets_label">Number of packets</string>
+    <string name="dfu_settings_dfu_mbr_size">MBR size</string>
+    <string name="dfu_settings_dfu_mbr_size_title">MBR size (default 4096 = 0x1000)</string>
+    <string name="dfu_settings_dfu_about">About DFU</string>
+    <string name="dfu_settings_dfu_about_summary">DFU documentation on Nordic\'s Developer Zone</string>
+    <string name="dfu_settings_dfu_information">Information</string>
+    <string name="dfu_settings_dfu_number_of_packets_info">During a DFU operation a lot of data packets are being sent to the target. The <i>onCharacteristicWrite(...)</i> callback 
+        in Android API is being invoked when the data has been written to the outgoing queue, not when physically sent. Packet Receipt Notifications were introduced to prevent from 
+        overflowing the queue. Disabling them or setting the value to high (> ~300) may cause the DFU process to freeze at some point, depending on the device model.</string>
+    
+    <string name="dfu_file_type_title">Select file type</string>
+    <string-array name="dfu_file_type">
+        <item>Soft Device</item>
+        <item>Bootloader</item>
+        <item>Application</item>
+        <item>Multiple files (ZIP)</item>
+    </string-array>
+    <string name="dfu_file_init_title">Init packet</string>
+    <string name="dfu_file_init_message">Do you want to select the Init packet file?\n
+        \nThe Init packet file (*.dat) should contain the device type and revision, application version, list of supported Soft Devices and the firmware CRC in binary format or, in case of old 
+        versions of the DFU bootloader, only the CRC (CRC-CCITT-16). In case of the new version of the bootloader the extended Init packet is <b>required</b>.</string>
+    
+    <string name="dfu_unknown_name">unnamed device</string>
+    <string name="dfu_uploading_label">Uploading&#8230;</string>
+    <string name="dfu_uploading_percentage_label">0%</string>
+    <string name="dfu_default_name">DEFAULT DFU</string>
+    <string name="dfu_confirmation_dialog_title">Application Uploading</string>
+    <string name="dfu_upload_dialog_cancel_message">Are you sure to cancel upload?</string>
+    <string name="dfu_success">Application has been transferred successfully.</string>
+    <string name="dfu_aborted">Uploading of the application has been canceled.</string>
+    
+    <string name="dfu_help_title">Select file</string>
+    <string name="dfu_help_message">A file browser application must be installed on the device before selecting the HEX file.
+        \n\nThere are number of applications available on Google Play store, f.e. Total Commander or File Manager, that allow you to pick a file from internal memory of the device. To upload 
+        a file from the Internet you may use f.e. Drive or Dropbox application.
+        \n\nYou will be asked to select an application if more than one is installed. A single application will be launched automatically.
+        \n\nSince <b>Android KitKat</b> you may use the preinstalled document picker application. Ensure <i>Display advanced devices</i> option is enabled in settings to use the <i>Internal storage</i>.
+        \n\nThe newest version of the Beacon firmware has been copied to <i>Nordic Semiconductor</i> folder in the internal storage.</string>
+        
+    <string name="dfu_zip_info_text">With the DFU you may update your application, Soft Device or the Booloader Over-The-Air. For each type a HEX or a BIN file may be provided.
+        \nIn order to update the Soft Device together with a compatible Bootloader put them into a ZIP file and name according to the image below.
+        \nYou may also provide the Init packet(s) that will be send to verify the firmware on the device side. More information about the Init packet is in the DFU documentation.</string>
+    
+</resources>

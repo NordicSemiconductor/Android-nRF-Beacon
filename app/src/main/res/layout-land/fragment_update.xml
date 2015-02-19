@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, Nordic Semiconductor
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  ~
+  ~ 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~
+  ~ 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
+  ~ documentation and/or other materials provided with the distribution.
+  ~
+  ~ 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
+  ~ software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  ~ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  ~ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  ~ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+  ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+  ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin_bottom" >
+
+    <!-- The size of text below must be fixed, therefore dp are used instead of sp -->
+
+    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/update_title_left_margin"
+        android:rotation="270"
+        android:text="@string/beacon_update"
+        android:textColor="@color/darkGray"
+        android:textSize="32dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/feature_vertical_margin_top"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+		android:baselineAligned="false">
+
+        <LinearLayout
+            style="@style/Widget.List"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="@dimen/feature_horizontal_margin"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+                style="@style/Widget.ListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/update_title" />
+
+            <LinearLayout
+                android:id="@+id/uuid_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/feature_section_padding"
+                android:paddingRight="@dimen/feature_section_padding" >
+
+                <TextView
+                    android:id="@+id/uuid_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/update_uuid" />
+
+                <TextView
+                    android:id="@+id/uuid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/uuid_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/major_minor_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/feature_section_padding"
+                android:paddingRight="@dimen/feature_section_padding" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/row_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/major_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/update_major" />
+
+                    <TextView
+                        android:id="@+id/major"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:ellipsize="end"
+                        android:textSize="26sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/row_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/minor_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/update_minor" />
+
+                    <TextView
+                        android:id="@+id/minor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="26sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rssi_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/feature_section_padding"
+                android:paddingRight="@dimen/feature_section_padding" >
+
+                <TextView
+                    android:id="@+id/rssi_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/update_rssi" />
+
+                <TextView
+                    android:id="@+id/rssi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:id="@+id/rssi_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="bottom"
+                    android:text="@string/update_rssi_unit"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/Widget.List"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="@dimen/feature_horizontal_margin"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="@color/backgroundColor"
+            android:orientation="vertical" >
+
+            <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+	            android:id="@+id/advanced_title"
+	            style="@style/Widget.ListTitle"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/update_advanced_title" />
+	
+	        <LinearLayout
+	            android:id="@+id/manufacturer_id_container"
+	            android:layout_width="match_parent"
+	           	android:layout_height="@dimen/row_height"
+	            android:background="?android:attr/selectableItemBackground"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal"
+	        	android:paddingLeft="@dimen/feature_section_padding"
+	        	android:paddingRight="@dimen/feature_section_padding" >
+	
+	            <TextView
+	                android:id="@+id/manufacturer_id_title"
+	                android:layout_width="0dp"
+	                android:layout_weight="1"
+	                android:layout_height="wrap_content"
+	                android:text="@string/update_manufacturer_id" />
+	
+	            <TextView
+	                android:id="@+id/manufacturer_id"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textSize="26sp" />
+	        </LinearLayout>
+	
+	        <LinearLayout
+	            android:id="@+id/adv_interval_container"
+	            android:layout_width="match_parent"
+	           	android:layout_height="@dimen/row_height"
+	            android:background="?android:attr/selectableItemBackground"
+	            android:gravity="center_vertical"
+	            android:orientation="horizontal"
+	        	android:paddingLeft="@dimen/feature_section_padding"
+	        	android:paddingRight="@dimen/feature_section_padding" >
+	
+	            <TextView
+	                android:id="@+id/adv_interval_title"
+	                android:layout_width="0dp"
+	                android:layout_weight="1"
+	                android:layout_height="wrap_content"
+	                android:text="@string/update_adv_interval" />
+	
+	            <TextView
+	                android:id="@+id/adv_interval"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textSize="26sp" />
+	
+	            <TextView
+	                android:id="@+id/adv_interval_unit"
+	                android:layout_width="wrap_content"
+	                android:layout_height="28dp"
+	                android:gravity="bottom"
+	                android:layout_marginLeft="4dp"
+	                android:text="@string/update_adv_interval_unit"
+	                android:textSize="12sp" />
+	        </LinearLayout>
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/leds"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:checked="true"
+            	android:textColor="?android:attr/textColorTertiary"
+                android:padding="@dimen/feature_section_padding"
+                android:text="@string/update_led" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/action_connect"
+        style="@style/Widget.Connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:text="@string/action_connect" />
+
+</RelativeLayout>
