@@ -4,8 +4,20 @@ The nRF Beacon application lets you explore the full range of possibilities for 
 
 The application allows you register actions that will be triggered when specified event occur. Currently a beacon may silent the phone, open an application, open a website in a browser, show predefined information about an object (Mona Lisa painting) or play an alarm on one of the 4 events: beacon region has been entered or exited, a beacon is near or very close.
 
-On Android 4.3 and 4.4.x the application requires nRF Beacon Service application to be installed on the device. It may be downloaded from Google Play: https://play.google.com/store/apps/details?id=no.nordicsemi.android.beacon.service.
-Since Android 5 (Lollipop) the service is build into the application and is using native API. The nRF Beacon Service application may be removed from the phone.
+### Dependencies
+
+In order to compile the project the **DFU Library is required**. This project may be found here: https://github.com/NordicSemiconductor/Android-DFU-Library.
+Please clone the nRF Toolbox and the DFU Library to the same root folder. The dependency is already configured in the gradle and set to *..:DFULibrary:dfu* module.
+
+On Android 4.3 and 4.4.x the application requires the nRF Beacon Service to be installed on the device. It may be downloaded from [Google Play](https://play.google.com/store/apps/details?id=no.nordicsemi.android.beacon.service). Since Android 5 (Lollipop) the service is build into the *nrf-beacon-lib-v2.0.aar* library and is using Android native API. After updating the phone to Android 5+ the nRF Beacon Service may be removed from the phone. The source code of thia library is attached in the app/sources folder.
+
+### nRF51822 Bluetooth Smart Beacon Kit
+
+The nRF51822 Bluetooth® Smart Beacon Kit is a reference design that lets you explore the full range of development possibilities for beacons using Bluetooth Smart technology. It consists of hardware, firmware and apps for both iOS and Android on Bluetooth 4.0 enabled smartphones.
+
+It is ultra-compact at 20 mm diameter and can run from CR1632 coin-cell batteries. The kit has two buttons which can be programmed to enable easy switching between modes and/or functionality, as well as an RGB LED which can be configured to indicate different events. Ten GPIO pins are available for expansion and the kit can be connected to an external programmer/debugger during development work. The nRF51822 Bluetooth Smart Beacon Kit also supports complete Over-The-Air (OTA) Device Firmware Upgrade (DFU) for all firmware on the nRF51822 chip.
+
+[![nRF51822 Bluetooth Smart Beacno Kit](http://img.youtube.com/vi/Q5SpUnJTuk8/0.jpg)](http://youtu.be/Q5SpUnJTuk8)
 
 ### Note:
 
