@@ -23,12 +23,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="no.nordicsemi.android.nrfbeacon"
     android:installLocation="auto"
-    android:versionCode="9"
-    android:versionName="1.2.3" >
+    android:versionCode="10"
+    android:versionName="1.3.0" >
 
     <uses-sdk
         android:minSdkVersion="18"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="22" />
 
     <!-- 
     	This permission had to be removed to due to the change in the new Android 5.

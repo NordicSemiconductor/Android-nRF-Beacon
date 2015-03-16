@@ -32,6 +32,7 @@ import no.nordicsemi.android.nrfbeacon.common.BoardHelpFragment;
 import no.nordicsemi.android.nrfbeacon.dfu.adapter.FileBrowserAppsAdapter;
 import no.nordicsemi.android.nrfbeacon.dfu.service.DfuService;
 import no.nordicsemi.android.nrfbeacon.dfu.settings.DfuSettingsActivity;
+import no.nordicsemi.android.nrfbeacon.dfu.settings.DfuSettingsFragment;
 import no.nordicsemi.android.nrfbeacon.scanner.ScannerFragment;
 import no.nordicsemi.android.nrfbeacon.scanner.ScannerFragmentListener;
 import no.nordicsemi.android.nrfbeacon.util.DebugLogger;
@@ -77,7 +78,7 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 	private static final String TAG = "DfuFragment";
 
 	private static final String PREFS_SAMPLES_VERSION = "no.nordicsemi.android.nrfbeacon.dfu.PREFS_SAMPLES_VERSION";
-	private static final int CURRENT_SAMPLES_VERSION = 1;
+	private static final int CURRENT_SAMPLES_VERSION = 2;
 
 	private static final String PREFS_DEVICE_NAME = "no.nordicsemi.android.nrfbeacon.dfu.PREFS_DEVICE_NAME";
 	private static final String PREFS_FILE_NAME = "no.nordicsemi.android.nrfbeacon.dfu.PREFS_FILE_NAME";
@@ -151,7 +152,7 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 		ensureSamplesExist();
 
 		// Restore saved state
-		mFileType = DfuService.TYPE_APPLICATION; // Default
+		mFileType = DfuService.TYPE_AUTO; // Default
 		if (savedInstanceState != null) {
 			mFileType = savedInstanceState.getInt(DATA_FILE_TYPE);
 			mFileTypeTmp = savedInstanceState.getInt(DATA_FILE_TYPE_TMP);
@@ -424,18 +425,18 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 	private void updateFileInfo(final String fileName, final long fileSize, final int fileType) {
 		mFileNameView.setText(fileName);
 		switch (fileType) {
-		case DfuService.TYPE_SOFT_DEVICE:
-			mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[0]);
-			break;
-		case DfuService.TYPE_BOOTLOADER:
-			mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[1]);
-			break;
-		case DfuService.TYPE_APPLICATION:
-			mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[2]);
-			break;
-		case DfuService.TYPE_AUTO:
-			mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[3]);
-			break;
+			case DfuService.TYPE_AUTO:
+				mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[0]);
+				break;
+			case DfuService.TYPE_SOFT_DEVICE:
+				mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[1]);
+				break;
+			case DfuService.TYPE_BOOTLOADER:
+				mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[2]);
+				break;
+			case DfuService.TYPE_APPLICATION:
+				mFileTypeView.setText(getResources().getStringArray(R.array.dfu_file_type)[3]);
+				break;
 		}
 		mFileSizeView.setText(getString(R.string.dfu_file_size_text, fileSize));
 		final String extension = mFileType == DfuService.TYPE_AUTO ? "(?i)ZIP" : "(?i)HEX|BIN"; // (?i) =  case insensitive
@@ -479,20 +480,20 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 	 */
 	private void onSelectFileClicked(final View view) {
 		mFileTypeTmp = mFileType;
-		int index = 2;
+		int index = 0;
 		switch (mFileType) {
-		case DfuService.TYPE_SOFT_DEVICE:
-			index = 0;
-			break;
-		case DfuService.TYPE_BOOTLOADER:
-			index = 1;
-			break;
-		case DfuService.TYPE_APPLICATION:
-			index = 2;
-			break;
-		case DfuService.TYPE_AUTO:
-			index = 3;
-			break;
+			case DfuService.TYPE_AUTO:
+				index = 0;
+				break;
+			case DfuService.TYPE_SOFT_DEVICE:
+				index = 1;
+				break;
+			case DfuService.TYPE_BOOTLOADER:
+				index = 2;
+				break;
+			case DfuService.TYPE_APPLICATION:
+				index = 3;
+				break;
 		}
 		// Show a dialog with file types
 		new AlertDialog.Builder(getActivity()).setTitle(R.string.dfu_file_type_title)
@@ -500,18 +501,18 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 					@Override
 					public void onClick(final DialogInterface dialog, final int which) {
 						switch (which) {
-						case 0:
-							mFileTypeTmp = DfuService.TYPE_SOFT_DEVICE;
-							break;
-						case 1:
-							mFileTypeTmp = DfuService.TYPE_BOOTLOADER;
-							break;
-						case 2:
-							mFileTypeTmp = DfuService.TYPE_APPLICATION;
-							break;
-						case 3:
-							mFileTypeTmp = DfuService.TYPE_AUTO;
-							break;
+							case 0:
+								mFileTypeTmp = DfuService.TYPE_AUTO;
+								break;
+							case 1:
+								mFileTypeTmp = DfuService.TYPE_SOFT_DEVICE;
+								break;
+							case 2:
+								mFileTypeTmp = DfuService.TYPE_BOOTLOADER;
+								break;
+							case 3:
+								mFileTypeTmp = DfuService.TYPE_APPLICATION;
+								break;
 						}
 					}
 				}).setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -588,6 +589,8 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 
 		showProgressBar();
 
+		final boolean keepBond = preferences.getBoolean(DfuSettingsFragment.SETTINGS_KEEP_BOND, false);
+
 		final Intent service = new Intent(getActivity(), DfuService.class);
 		service.putExtra(DfuService.EXTRA_DEVICE_ADDRESS, mSelectedDevice.getAddress());
 		service.putExtra(DfuService.EXTRA_DEVICE_NAME, mSelectedDevice.getName());
@@ -597,6 +600,7 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 		service.putExtra(DfuService.EXTRA_FILE_URI, mFileStreamUri);
 		service.putExtra(DfuService.EXTRA_INIT_FILE_PATH, mInitFilePath);
 		service.putExtra(DfuService.EXTRA_INIT_FILE_URI, mInitFileStreamUri);
+		service.putExtra(DfuService.EXTRA_KEEP_BOND, keepBond);
 		getActivity().startService(service);
 	}
 
@@ -764,23 +768,21 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 		new File(root, "ble_app_beacon.hex").delete();
 
 		boolean oldCopied = false;
+		boolean newCopied = false;
 		File f = new File(pca20006, "ble_app_beacon_v1_0_1_s110_v6_0_0.hex");
 		if (!f.exists()) {
 			copyRawResource(R.raw.ble_app_beacon_v1_0_1_s110_v6_0_0, f);
 			oldCopied = true;
 		}
-		f = new File(pca20006, "ble_app_beacon_v1_1_0_s110_v7_1_0.hex");
+		f = new File(pca20006, "ble_app_beacon_v1_1_0_s110_v7_1_0.zip");
 		if (!f.exists()) {
 			copyRawResource(R.raw.ble_app_beacon_v1_1_0_s110_v7_1_0, f);
-			oldCopied = true;
-		}
-		f = new File(pca20006, "ble_app_beacon_v1_1_0_s110_v7_1_0_ext_init.dat");
-		if (!f.exists()) {
-			copyRawResource(R.raw.ble_app_beacon_v1_1_0_s110_v7_1_0_ext_init, f);
-			oldCopied = true;
+			newCopied = true;
 		}
 		if (oldCopied)
 			Toast.makeText(getActivity(), R.string.dfu_example_files_created, Toast.LENGTH_SHORT).show();
+		else if (newCopied)
+			Toast.makeText(getActivity(), R.string.dfu_example_files_added, Toast.LENGTH_SHORT).show();
 
 		// Save the current version
 		preferences.edit().putInt(PREFS_SAMPLES_VERSION, CURRENT_SAMPLES_VERSION).apply();

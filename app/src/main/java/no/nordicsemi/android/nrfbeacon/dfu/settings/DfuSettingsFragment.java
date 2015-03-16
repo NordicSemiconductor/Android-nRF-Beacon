@@ -30,6 +30,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 
 public class DfuSettingsFragment extends PreferenceFragment implements DfuSettingsConstants, SharedPreferences.OnSharedPreferenceChangeListener {
+	public static final String SETTINGS_KEEP_BOND = "settings_keep_bond";
 
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
