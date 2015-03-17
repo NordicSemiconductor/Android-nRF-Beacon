@@ -34,6 +34,7 @@ import no.nordicsemi.android.nrfbeacon.database.BeaconContract;
 import no.nordicsemi.android.nrfbeacon.database.DatabaseHelper;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -230,15 +231,23 @@ public class BeaconsListFragment extends ListFragment implements BeaconServiceCo
 		}
 		case BeaconContract.ACTION_URL: {
 			mParentFragment.stopScanning();
-			final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(actionParam));
-			startActivity(intent);
+			try {
+				final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(actionParam));
+				startActivity(intent);
+			} catch (final ActivityNotFoundException e) {
+				Toast.makeText(getActivity(), R.string.no_application, Toast.LENGTH_SHORT).show();
+			}
 			break;
 		}
 		case BeaconContract.ACTION_APP: {
 			mParentFragment.stopScanning();
-			final Intent intent = new Intent(Intent.ACTION_MAIN);
-			intent.setPackage(actionParam);
-			startActivity(intent);
+			try {
+				final Intent intent = new Intent(Intent.ACTION_MAIN);
+				intent.setPackage(actionParam);
+				startActivity(intent);
+			} catch (final ActivityNotFoundException e) {
+				Toast.makeText(getActivity(), R.string.no_given_application, Toast.LENGTH_SHORT).show();
+			}
 			break;
 		}
 		case BeaconContract.ACTION_TASKER:

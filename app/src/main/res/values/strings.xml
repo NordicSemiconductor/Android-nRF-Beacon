@@ -93,6 +93,7 @@
     
     <string name="url_error">The given URL is not valid.</string>
     <string name="no_application">Web Browser application is not available.</string>
+	<string name="no_given_application">Application is not installed.</string>
     <string name="not_available">n/a</string>
     <string name="progress">%d%%</string>
     
