@@ -97,11 +97,18 @@
     </style>
 
     <!-- Toolbar -->
-
     <style name="ActionBarThemeOverlay" parent="">
+		<item name="android:textColorPrimary">#000</item>
+		<item name="android:textColorSecondary">#8fff</item>
         <item name="colorControlNormal">?actionBarIconColor</item>
         <item name="colorControlHighlight">#3fff</item>
     </style>
+
+	<!-- Style used by the Toolbar -->
+	<style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+		<item name="android:textColor">#fff</item>
+		<item name="android:textSize">18sp</item>
+	</style>
 
     <style name="ActionBarPopupThemeOverlay" parent="ThemeOverlay.AppCompat.Light" />
     
@@ -110,12 +117,19 @@
 	</style>
 
     <!-- Application theme. -->
-    <style name="AppThemeBase" parent="@style/Theme.AppCompat.Light">
+    <style name="AppTheme.DialogTheme" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/actionBarColor</item>
+        <item name="colorPrimaryDark">@color/actionBarColorDark</item>
+        <item name="colorAccent">@color/actionBarColorDark</item>
+    </style>
+
+    <style name="AppThemeBase" parent="@style/Theme.AppCompat.Light.NoActionBar">
 		<item name="actionBarIconColor">#fff</item>
 		<item name="actionBarInsetStart">16dp</item>
         <item name="android:windowBackground">@drawable/background</item>
         <item name="actionBarPopupTheme">@style/Theme.AppCompat.Light.DarkActionBar</item>
         <item name="android:buttonStyle">@style/Widget.Button</item>
+		<item name="alertDialogTheme">@style/AppTheme.DialogTheme</item>
         <item name="android:textAppearanceListItem">@style/TextAppearanceListItem</item>
         <item name="android:textAppearanceListItemSmall">@style/TextAppearanceListItem</item>
         <item name="android:textAppearanceLarge">@style/TextAppearanceLarge</item>
@@ -124,15 +138,10 @@
         <item name="colorPrimaryDark">@color/actionBarColorDark</item>
         <item name="colorAccent">@color/actionBarColorDark</item>
         <item name="editTextColor">?android:attr/textColorSecondary</item>
-        <item name="android:textColorPrimary">#FFFFFFFF</item>
-        <item name="android:textColorPrimaryInverse">#FFFFFFFF</item>
+        <item name="android:textColorPrimary">#FF000000</item>
+		<item name="android:textColorPrimaryInverse">#FF444444</item>
         <item name="android:textAppearanceLargePopupMenu">@style/PopupMenuTextAppearanceLarge</item>
         <item name="android:textAppearanceSmallPopupMenu">@style/PopupMenuTextAppearanceSmall</item>
-    </style>
-    
-    <style name="AppThemeWithToolbar" parent="@style/AppThemeBase">
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme" parent="@style/AppThemeBase">

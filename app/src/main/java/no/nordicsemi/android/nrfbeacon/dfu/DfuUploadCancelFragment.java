@@ -21,13 +21,13 @@
  */
 package no.nordicsemi.android.nrfbeacon.dfu;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 
 import no.nordicsemi.android.nrfbeacon.R;
 import no.nordicsemi.android.nrfbeacon.dfu.service.DfuService;

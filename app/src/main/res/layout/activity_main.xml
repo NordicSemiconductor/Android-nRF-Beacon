@@ -32,14 +32,15 @@
         android:orientation="vertical" >
 
         <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-		    xmlns:iosched="http://schemas.android.com/apk/res-auto"
-		    android:id="@+id/toolbar"
-		    android:layout_width="match_parent"
-		    android:layout_height="?actionBarSize"
-		    android:background="@null"
-		    iosched:contentInsetStart="?actionBarInsetStart"
-		    iosched:popupTheme="@style/ActionBarPopupThemeOverlay"
-		    iosched:theme="@style/ActionBarThemeOverlay" />
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/HeaderBar"
+            android:id="@+id/toolbar"
+            android:elevation="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:theme="@style/ActionBarThemeOverlay"
+            app:popupTheme="@style/ActionBarPopupThemeOverlay"
+            app:titleTextAppearance="@style/ActionBar.TitleText"/>
 
         <com.google.samples.apps.iosched.ui.widget.SlidingTabLayout
             android:id="@+id/sliding_tabs"

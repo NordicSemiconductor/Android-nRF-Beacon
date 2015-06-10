@@ -22,6 +22,14 @@
   -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Style used by the Toolbar -->
+    <style name="ActionBarThemeOverlay" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="android:textColorSecondary">#8fff</item>
+        <item name="colorControlNormal">#fff</item>
+        <item name="colorControlHighlight">#3fff</item>
+    </style>
+
     <style name="Widget.List">
         <item name="android:background">@color/backgroundColor</item>
         <item name="android:gravity">center_horizontal</item>

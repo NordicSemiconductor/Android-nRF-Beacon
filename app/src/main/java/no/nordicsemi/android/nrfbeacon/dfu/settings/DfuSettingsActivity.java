@@ -23,18 +23,27 @@ package no.nordicsemi.android.nrfbeacon.dfu.settings;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-public class DfuSettingsActivity extends ActionBarActivity {
+import no.nordicsemi.android.nrfbeacon.R;
+
+public class DfuSettingsActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_settings);
+
+		// Setup the custom toolbar
+		final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Display the fragment as the main content.
-		getFragmentManager().beginTransaction().replace(android.R.id.content, new DfuSettingsFragment()).commit();
-
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		if (savedInstanceState == null)
+			getFragmentManager().beginTransaction().add(R.id.content, new DfuSettingsFragment()).commit();
 	}
 
 	@Override

@@ -21,9 +21,6 @@
  */
 package no.nordicsemi.android.nrfbeacon;
 
-import no.nordicsemi.android.nrfbeacon.beacon.BeaconsFragment;
-import no.nordicsemi.android.nrfbeacon.dfu.DfuFragment;
-import no.nordicsemi.android.nrfbeacon.update.UpdateFragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Intent;
@@ -33,7 +30,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +39,11 @@ import android.widget.Toast;
 import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
 import com.melnykov.fab.FloatingActionButton;
 
-public class MainActivity extends ActionBarActivity {
+import no.nordicsemi.android.nrfbeacon.beacon.BeaconsFragment;
+import no.nordicsemi.android.nrfbeacon.dfu.DfuFragment;
+import no.nordicsemi.android.nrfbeacon.update.UpdateFragment;
+
+public class MainActivity extends AppCompatActivity {
 	public static final String NRF_BEACON_SERVICE_URL = "market://details?id=no.nordicsemi.android.beacon.service";
 	public static final String OPENED_FROM_LAUNCHER = "no.nordicsemi.android.nrfbeacon.extra.opened_from_launcher";
 	public static final String EXTRA_OPEN_DFU = "no.nordicsemi.android.nrfbeacon.extra.open_dfu";

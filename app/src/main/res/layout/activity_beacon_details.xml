@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015, Nordic Semiconductor
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  ~
+  ~ 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+  ~
+  ~ 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the
+  ~ documentation and/or other materials provided with the distribution.
+  ~
+  ~ 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this
+  ~ software without specific prior written permission.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  ~ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  ~ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  ~ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+  ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+  ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include layout="@layout/toolbar" android:id="@+id/toolbar" />
+
+    <!-- The size of text below must be fixed, therefore dp are used instead of sp -->
+
+    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/config_title_left_margin"
+        android:rotation="270"
+        android:text="@string/beacon_config"
+        android:textColor="@color/darkGray"
+        android:textSize="32dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar">
+
+        <EditText
+            android:id="@+id/name"
+            style="@style/Widget.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/feature_horizontal_margin"
+            android:layout_marginRight="@dimen/feature_horizontal_margin"
+            android:layout_marginTop="@dimen/feature_vertical_margin_top"
+            android:hint="@string/settings_name_hint"
+            android:imeOptions="flagNoExtractUi|actionDone"
+            android:padding="3dp"
+            android:singleLine="true" />
+
+        <!-- Identity section -->
+
+        <LinearLayout
+            style="@style/Widget.List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/feature_horizontal_margin"
+            android:layout_marginRight="@dimen/feature_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
+
+            <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+                style="@style/Widget.ListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_identity_title" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/feature_section_padding"
+                android:paddingRight="@dimen/feature_section_padding" >
+
+                <TableRow
+                    android:layout_width="match_parent"
+            		android:layout_height="@dimen/row_height"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/row_height" >
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_uuid" />
+
+                    <TextView
+                        android:id="@+id/uuid"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:freezesText="true"
+                        android:gravity="right"
+                        android:textSize="@dimen/uuid_textSize" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+            		android:layout_height="@dimen/row_height"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/row_height" >
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_major" />
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+                        android:id="@+id/major"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:freezesText="true"
+                        android:gravity="right"
+                        android:textSize="26sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+            		android:layout_height="@dimen/row_height"
+                    android:minHeight="@dimen/row_height" >
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/settings_minor" />
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+                        android:id="@+id/minor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:freezesText="true"
+                        android:gravity="right"
+                        android:textSize="26sp" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <!-- Identity section -->
+
+        <LinearLayout
+            style="@style/Widget.List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/feature_horizontal_margin"
+            android:layout_marginRight="@dimen/feature_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
+
+            <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+                style="@style/Widget.ListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_notify_title" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TableRow
+                    android:id="@+id/event_container"
+                    android:layout_width="match_parent"
+            		android:layout_height="@dimen/row_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/row_height"
+                    android:paddingLeft="@dimen/feature_section_padding"
+                    android:paddingRight="@dimen/feature_section_padding" >
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/settings_event" />
+
+                    <TextView
+                        android:id="@+id/event"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="6dp"
+                        android:drawableRight="@drawable/ic_event_small"
+                        android:freezesText="true"
+                        android:gravity="right|center_vertical" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/action_container"
+                    android:layout_width="match_parent"
+            		android:layout_height="@dimen/row_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/row_height"
+                    android:paddingLeft="@dimen/feature_section_padding"
+                    android:paddingRight="@dimen/feature_section_padding" >
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/settings_action" />
+
+                    <TextView
+                        android:id="@+id/action"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="6dp"
+                        android:drawableRight="@drawable/ic_action_small"
+                        android:freezesText="true"
+                        android:gravity="right|center_vertical" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/action_param_container"
+                    android:layout_width="match_parent"
+            		android:layout_height="@dimen/row_height"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/row_height"
+                    android:paddingLeft="@dimen/feature_section_padding"
+                    android:paddingRight="@dimen/feature_section_padding" >
+
+                    <no.nordicsemi.android.nrfbeacon.widget.TrebuchetTextView
+                        android:id="@+id/action_param_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/settings_action_param_url" />
+
+                    <TextView
+                        android:id="@+id/action_param"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:freezesText="true"
+                        android:gravity="right"
+                        android:singleLine="true" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <!-- Status section -->
+
+        <LinearLayout
+            style="@style/Widget.List"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/feature_horizontal_margin"
+            android:layout_marginRight="@dimen/feature_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical" >
+
+            <no.nordicsemi.android.nrfbeacon.widget.TrebuchetBoldTextView
+                style="@style/Widget.ListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_status_title" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/enable"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+            	android:textColor="?android:attr/textColorTertiary"
+                android:checked="true"
+                android:padding="@dimen/feature_section_padding"
+                android:text="@string/settings_enabled" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+		android:layout_below="@+id/toolbar"
+        android:background="@drawable/header_shadow"/>
+
+</RelativeLayout>
