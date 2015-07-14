@@ -30,5 +30,5 @@ dependencies {
     compile 'no.nordicsemi.android.beacon.common:nrf-beacon-lib-v2.0@aar'
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile 'com.melnykov:floatingactionbutton:1.1.0'
-    compile project(':..:DFULibrary:dfu')
+    compile project(':dfu')
 }
