@@ -7,8 +7,8 @@ android {
         applicationId "no.nordicsemi.android.nrfbeacon"
         minSdkVersion 18
         targetSdkVersion 22
-        versionCode 12
-        versionName '1.4.0'
+        versionCode 13
+        versionName '1.4.1'
     }
     buildTypes {
         release {
@@ -28,7 +28,7 @@ repositories{
 
 dependencies {
     compile 'no.nordicsemi.android.beacon.common:nrf-beacon-lib-v2.0@aar'
-    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.melnykov:floatingactionbutton:1.1.0'
     compile project(':dfu')
 }
