@@ -47,5 +47,6 @@
     <dimen name="alert_dialog_padding_bottom">8dp</dimen>
     
 	<dimen name="headerbar_elevation">4dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
     
 </resources>

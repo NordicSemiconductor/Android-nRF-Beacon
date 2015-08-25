@@ -21,20 +21,29 @@
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
 	tools:context=".settings.SettingsActivity">
 
-	<include layout="@layout/toolbar"/>
+	<include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/background_title"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="6dp"/>
 
 	<FrameLayout
 		android:id="@+id/content"
+        android:layout_below="@+id/toolbar"
 		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		android:layout_weight="1"
+		android:layout_height="match_parent"
 		android:foreground="@drawable/header_shadow"/>
 
-</LinearLayout>
+</RelativeLayout>

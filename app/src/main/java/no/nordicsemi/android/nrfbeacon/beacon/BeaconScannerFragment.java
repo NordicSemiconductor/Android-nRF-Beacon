@@ -21,19 +21,18 @@
  */
 package no.nordicsemi.android.nrfbeacon.beacon;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
+
 import no.nordicsemi.android.beacon.Beacon;
 import no.nordicsemi.android.beacon.BeaconRegion;
 import no.nordicsemi.android.beacon.BeaconServiceConnection;
 import no.nordicsemi.android.beacon.Proximity;
 import no.nordicsemi.android.nrfbeacon.R;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatDialog;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class BeaconScannerFragment extends DialogFragment implements BeaconServiceConnection.BeaconsListener {
 	private boolean mCompleted;
@@ -43,11 +42,6 @@ public class BeaconScannerFragment extends DialogFragment implements BeaconServi
 		super.onCreate(savedInstanceState);
 
 		mCompleted = false;
-	}
-
-	@Override
-	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_scan, container, false);
 	}
 
 	@Override
@@ -65,9 +59,11 @@ public class BeaconScannerFragment extends DialogFragment implements BeaconServi
 		}
 	}
 
+	@NonNull
 	@Override
 	public Dialog onCreateDialog(final Bundle savedInstanceState) {
-		return new AppCompatDialog(getActivity(), R.style.AppTheme_Scanner);
+		return new AlertDialog.Builder(getContext())
+			.setView(R.layout.fragment_scan).create();
 	}
 
 	@Override

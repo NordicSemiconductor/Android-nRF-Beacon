@@ -27,15 +27,16 @@ import no.nordicsemi.android.beacon.BeaconServiceConnection;
 import no.nordicsemi.android.beacon.ServiceProxy;
 import no.nordicsemi.android.nrfbeacon.MainActivity;
 import no.nordicsemi.android.nrfbeacon.R;
+import no.nordicsemi.android.nrfbeacon.common.BaseFragment;
 import no.nordicsemi.android.nrfbeacon.database.BeaconContract;
 import no.nordicsemi.android.nrfbeacon.database.DatabaseHelper;
-import android.app.Activity;
+
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -44,9 +45,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class BeaconsFragment extends Fragment {
+public class BeaconsFragment extends BaseFragment {
 	private static final String BEACONS_FRAGMENT = "beaconsFragment";
 	private static final String SCANNER_FRAGMENT = "scannerFragment";
+
+	/** Nordic Semiconductor ASA company ID. This parameter may be skipped as it's default. */
+	public static final int BEACON_COMPANY_ID = 0x0059;
 
 	private DatabaseHelper mDatabaseHelper;
 	private BeaconsListFragment mBeaconsListFragment;
@@ -61,7 +65,7 @@ public class BeaconsFragment extends Fragment {
 
 			final BeaconScannerFragment scannerFragment = mScannerFragment;
 			if (scannerFragment != null) {
-				startRangingBeaconsInRegion(BeaconRegion.ANY_UUID, scannerFragment);
+				startRangingBeaconsInRegion(BEACON_COMPANY_ID, BeaconRegion.ANY_UUID, scannerFragment);
 			} else {
 				final FragmentManager fm = getChildFragmentManager();
 				if (fm.getBackStackEntryCount() == 0) {
@@ -96,10 +100,10 @@ public class BeaconsFragment extends Fragment {
 	}
 
 	@Override
-	public void onAttach(final Activity activity) {
-		super.onAttach(activity);
+	public void onAttach(final Context context) {
+		super.onAttach(context);
 
-		final MainActivity parent = (MainActivity) activity;
+		final MainActivity parent = (MainActivity) context;
 		parent.setBeaconsFragment(this);
 	}
 
@@ -154,6 +158,13 @@ public class BeaconsFragment extends Fragment {
 		setHasOptionsMenu(true);
 	}
 
+	@Override
+	protected void onPermissionGranted() {
+		// Now, when the permission is granted, we may start scanning for beacons.
+		// We bind even if the FAB was clicked.
+		bindService();
+	}
+
 	/**
 	 * Opens the configuration screen for the region with given id.
 	 * 
@@ -171,12 +182,15 @@ public class BeaconsFragment extends Fragment {
 	 * Opens the scanned fragment. Starts ranging for any beacon in immediate position.
 	 */
 	public void onAddOrEditRegion() {
+		if (!ensurePermission())
+			return;
+
 		stopScanning();
 
 		final BeaconScannerFragment fragment = mScannerFragment = new BeaconScannerFragment();
 		fragment.show(getChildFragmentManager(), SCANNER_FRAGMENT);
 
-		mServiceConnection.startRangingBeaconsInRegion(BeaconRegion.ANY_UUID, fragment);
+		mServiceConnection.startRangingBeaconsInRegion(BEACON_COMPANY_ID, BeaconRegion.ANY_UUID, fragment);
 	}
 
 	/**
@@ -237,6 +251,9 @@ public class BeaconsFragment extends Fragment {
 	 * Binds the app with the beacons service. If it's not installed on Android 4.3 or 4.4 it asks for download. On Android 5+ the service is built into the beacon application.
 	 */
 	private void bindService() {
+		if (!ensurePermission())
+			return;
+
 		final boolean success = ServiceProxy.bindService(getActivity(), mServiceConnection);
 		if (!success) {
 			new AlertDialog.Builder(getActivity()).setTitle(R.string.service_required_title).setMessage(R.string.service_required_message)
@@ -257,9 +274,11 @@ public class BeaconsFragment extends Fragment {
 	}
 
 	private void unbindService() {
-		// Unbinding service will stop all active scanning listeners
-		ServiceProxy.unbindService(getActivity(), mServiceConnection);
-		mDatabaseHelper.resetSignalStrength();
+		if (mServiceConnected) {
+			// Unbinding service will stop all active scanning listeners
+			ServiceProxy.unbindService(getActivity(), mServiceConnection);
+			mDatabaseHelper.resetSignalStrength();
+		}
 	}
 
 	/**

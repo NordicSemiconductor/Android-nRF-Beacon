@@ -20,87 +20,83 @@
   ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="no.nordicsemi.android.nrfbeacon"
-    android:installLocation="auto"
-    android:versionCode="12"
-    android:versionName="1.4.0" >
+<manifest package="no.nordicsemi.android.nrfbeacon"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:installLocation="auto">
 
-    <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="22" />
+	<!--
+		This permission had to be removed to due to the change in the new Android 5.
+		Defining the same permission is allowed now for applications signed with the same key. Otherwise there is a -505 error during installation.
+		However, this implies that in order to make the nRF Beacon work with the Tasker the latter one has to be installed first (it defines the permission).
+	 -->
+	<!-- <permission
+		android:name="net.dinglisch.android.tasker.PERMISSION_RUN_TASKS"
+		android:description="@string/permission_descr_run_tasks"
+		android:icon="@drawable/ic_action_small_tasker"
+		android:label="@string/permission_label_run_task"
+		android:protectionLevel="normal" /> -->
 
-    <!-- 
-    	This permission had to be removed to due to the change in the new Android 5.
-    	Defining the same permission is allowed now for applications signed with the same key. Otherwise there is a -505 error during installation.
-    	However, this implies that in order to make the nRF Beacon work with the Tasker the latter one has to be installed first (it defines the permission).
-     -->
-    <!-- <permission
-        android:name="net.dinglisch.android.tasker.PERMISSION_RUN_TASKS"
-        android:description="@string/permission_descr_run_tasks"
-        android:icon="@drawable/ic_action_small_tasker"
-        android:label="@string/permission_label_run_task"
-        android:protectionLevel="normal" /> -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="net.dinglisch.android.tasker.PERMISSION_RUN_TASKS"/>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="net.dinglisch.android.tasker.PERMISSION_RUN_TASKS" />
+	<uses-feature
+		android:name="android.hardware.bluetooth_le"
+		android:required="true"/>
 
-    <uses-feature
-        android:name="android.hardware.bluetooth_le"
-        android:required="true" />
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name="no.nordicsemi.android.nrfbeacon.SplashscreenActivity"
+			android:label="@string/app_name"
+			android:noHistory="true"
+			android:theme="@style/AppTheme.Fullscreen">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name="no.nordicsemi.android.nrfbeacon.SplashscreenActivity"
-            android:label="@string/app_name"
-            android:noHistory="true"
-            android:theme="@style/AppTheme.Fullscreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="no.nordicsemi.android.nrfbeacon.MainActivity">
+			<intent-filter
+				android:icon="@drawable/ic_feature"
+				android:label="@string/beacon_feature_title">
+				<action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="no.nordicsemi.android.nrfbeacon.MainActivity" >
-            <intent-filter
-                android:icon="@drawable/ic_feature"
-                android:label="@string/beacon_feature_title" >
-                <action android:name="android.intent.action.MAIN" />
+				<category android:name="no.nordicsemi.android.nrftoolbox.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name="no.nordicsemi.android.nrfbeacon.beacon.BeaconsDetailsActivity"
+			android:label="@string/beacon_config_title"/>
+		<activity
+			android:name="no.nordicsemi.android.nrfbeacon.dfu.settings.DfuSettingsActivity"
+			android:label="@string/beacon_settings_title"/>
+		<activity
+			android:name="no.nordicsemi.android.nrfbeacon.NotificationActivity"
+			android:noHistory="true"/>
 
-                <category android:name="no.nordicsemi.android.nrftoolbox.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="no.nordicsemi.android.nrfbeacon.beacon.BeaconsDetailsActivity"
-            android:label="@string/beacon_config_title" />
-        <activity
-            android:name="no.nordicsemi.android.nrfbeacon.dfu.settings.DfuSettingsActivity"
-            android:label="@string/beacon_settings_title" />
-        <activity
-            android:name="no.nordicsemi.android.nrfbeacon.NotificationActivity"
-            android:noHistory="true" />
-
-        <service
-            android:name="no.nordicsemi.android.nrfbeacon.UpdateService"
-            android:description="@string/service_description"
-            android:exported="false"
-            android:label="@string/service_name" />
-        <service
-            android:name="no.nordicsemi.android.nrfbeacon.dfu.service.DfuService"
-            android:description="@string/service_dfu_description"
-            android:exported="false"
-            android:label="@string/service_dfu_name" />
-        <service android:name="no.nordicsemi.android.beacon.v21.BeaconLocationService"
-            android:description="@string/beacon_service_description"
-            android:exported="false"
-            android:label="@string/beacon_service_name" />
-    </application>
+		<service
+			android:name="no.nordicsemi.android.nrfbeacon.UpdateService"
+			android:description="@string/service_description"
+			android:exported="false"
+			android:label="@string/service_name"/>
+		<service
+			android:name="no.nordicsemi.android.nrfbeacon.dfu.service.DfuService"
+			android:description="@string/service_dfu_description"
+			android:exported="false"
+			android:label="@string/service_dfu_name"/>
+		<service
+			android:name="no.nordicsemi.android.beacon.v21.BeaconLocationService"
+			android:description="@string/beacon_service_description"
+			android:exported="false"
+			android:label="@string/beacon_service_name"/>
+	</application>
 
 </manifest>

@@ -20,8 +20,37 @@
   ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
-<resources>
-    <color name="fab_normal">#DC582A</color>
-    <color name="fab_normal_muted">#e76537</color>
-    <color name="fab_pressed">#9E3F1E</color>
-</resources>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="?android:attr/buttonBarStyle"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:paddingTop="10dp">
+
+	<TextView
+		android:id="@+id/permission_rationale"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/rationale_message"
+		android:paddingEnd="@dimen/alert_dialog_padding"
+		android:paddingStart="@dimen/alert_dialog_padding"
+		android:layout_marginBottom="8dp"
+		android:visibility="gone"/>
+
+	<ListView
+		android:id="@android:id/list"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:paddingEnd="@dimen/alert_dialog_padding"
+		android:paddingStart="@dimen/alert_dialog_padding"
+		android:scrollbarStyle="outsideOverlay" />
+
+	<Button
+		android:id="@+id/action_cancel"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/scanner_action_scan" />
+
+</LinearLayout>

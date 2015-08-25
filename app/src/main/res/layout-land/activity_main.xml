@@ -20,53 +20,59 @@
   ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         style="@style/HeaderBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
-            style="@style/HeaderBar"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:theme="@style/ActionBarThemeOverlay"
             app:popupTheme="@style/ActionBarPopupThemeOverlay"
             app:titleTextAppearance="@style/ActionBar.TitleText">
-		    
-		    <com.google.samples.apps.iosched.ui.widget.SlidingTabLayout
-	            android:id="@+id/sliding_tabs"
-	            android:layout_width="360dp"
-	            android:layout_height="match_parent" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                app:tabSelectedTextColor="@color/tabSelectedTextColor"
+                app:tabTextColor="@color/tabTextColor"
+                app:tabIndicatorColor="@color/tabIndicatorColor"
+                app:tabGravity="fill"
+                app:tabMode="fixed" />
 		</android.support.v7.widget.Toolbar>
-        
-    </LinearLayout>
 
-    <FrameLayout
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:foreground="@drawable/header_shadow" >
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/fab_ic_add"
+        app:backgroundTint="@color/fab_normal"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="bottom|right|end"
+        app:elevation="4dp"/>
 
-        <include
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            layout="@layout/fab_add" />
-    </FrameLayout>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/background_title"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="6dp"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

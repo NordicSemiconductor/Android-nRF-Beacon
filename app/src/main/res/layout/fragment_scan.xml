@@ -21,30 +21,31 @@
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal|bottom"
-    android:orientation="vertical"
-    android:padding="8dp" >
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="center_horizontal|bottom"
+	android:orientation="vertical"
+	android:padding="8dp">
 
-    <ProgressBar
-        style="@android:style/Widget.Holo.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="40dp" />
+	<ProgressBar
+		style="@style/Widget.AppCompat.ProgressBar"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="10dp"
+		android:layout_marginTop="30dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scanning"
-        android:textSize="24sp" />
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/scanning"
+		android:textSize="24sp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/scanning_info"
-        android:textSize="14sp" />
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
+		android:layout_marginTop="20dp"
+		android:text="@string/scanning_info"
+		android:textSize="14sp"/>
 
 </LinearLayout>

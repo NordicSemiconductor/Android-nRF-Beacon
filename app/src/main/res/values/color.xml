@@ -28,6 +28,10 @@
     <color name="headerBackgroundColorDisabled">#6A6A6A</color>
     <color name="headerTextColor">#FFFFFF</color>
     <color name="dividerColor">#BBBDC0</color>
+    <color name="fab_normal">#DC582A</color>
+    <color name="tabSelectedTextColor">@android:color/white</color>
+    <color name="tabTextColor">#AAFFFFFF</color>
+    <color name="tabIndicatorColor">@android:color/white</color>
     
     <color name="darkGray">#AAABAF</color>
 </resources>

@@ -23,15 +23,21 @@ package no.nordicsemi.android.nrfbeacon.scanner;
 
 import android.bluetooth.BluetoothDevice;
 
+import no.nordicsemi.android.support.v18.scanner.ScanResult;
+
 public class ExtendedBluetoothDevice {
 	public BluetoothDevice device;
 	public int rssi;
 	public String name;
 
-	public ExtendedBluetoothDevice(final BluetoothDevice device, final String name, final int rssi) {
-		this.device = device;
-		this.name = name;
-		this.rssi = rssi;
+	public ExtendedBluetoothDevice(final ScanResult scanResult) {
+		this.device = scanResult.getDevice();
+		this.name = scanResult.getScanRecord() != null ? scanResult.getScanRecord().getDeviceName() : null;
+		this.rssi = scanResult.getRssi();
+	}
+
+	public boolean matches(final ScanResult scanResult) {
+		return device.getAddress().equals(scanResult.getDevice().getAddress());
 	}
 
 	@Override

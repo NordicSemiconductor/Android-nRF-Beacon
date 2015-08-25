@@ -109,10 +109,10 @@ public class BeaconsListFragment extends ListFragment implements BeaconServiceCo
 			final int event = cursor.getInt(6 /* EVENT */);
 
 			// We must start ranging for all beacons
-			serviceConnection.startRangingBeaconsInRegion(uuid, major, minor, this);
+			serviceConnection.startRangingBeaconsInRegion(BeaconsFragment.BEACON_COMPANY_ID, uuid, major, minor, this);
 			// And additionally start monitoring only for those with these two events set
 			if (event == BeaconContract.EVENT_IN_RANGE || event == BeaconContract.EVENT_OUT_OF_RANGE)
-				serviceConnection.startMonitoringForRegion(uuid, major, minor, this);
+				serviceConnection.startMonitoringForRegion(BeaconsFragment.BEACON_COMPANY_ID, uuid, major, minor, this);
 		}
 	}
 

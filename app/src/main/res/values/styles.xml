@@ -126,7 +126,7 @@
     <style name="AppThemeBase" parent="@style/Theme.AppCompat.Light.NoActionBar">
 		<item name="actionBarIconColor">#fff</item>
 		<item name="actionBarInsetStart">16dp</item>
-        <item name="android:windowBackground">@drawable/background</item>
+        <item name="android:windowBackground">@drawable/background_image</item>
         <item name="actionBarPopupTheme">@style/Theme.AppCompat.Light.DarkActionBar</item>
         <item name="android:buttonStyle">@style/Widget.Button</item>
 		<item name="alertDialogTheme">@style/AppTheme.DialogTheme</item>
@@ -148,10 +148,8 @@
         <!-- Empty -->
     </style>
 
-    <style name="AppTheme.Scanner" parent="@style/Theme.AppCompat.Dialog"/>
-
     <style name="AppTheme.Fullscreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/background</item>
+        <item name="android:windowBackground">@drawable/background_image</item>
     </style>
 
 </resources>

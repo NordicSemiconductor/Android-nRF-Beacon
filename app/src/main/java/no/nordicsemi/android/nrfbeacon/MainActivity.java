@@ -26,6 +26,8 @@ import android.bluetooth.BluetoothManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -35,9 +37,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-import com.google.samples.apps.iosched.ui.widget.SlidingTabLayout;
-import com.melnykov.fab.FloatingActionButton;
 
 import no.nordicsemi.android.nrfbeacon.beacon.BeaconsFragment;
 import no.nordicsemi.android.nrfbeacon.dfu.DfuFragment;
@@ -76,15 +75,13 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 		// Prepare the sliding tab layout and the view pager
-		final SlidingTabLayout slidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
+		final TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
 		final ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
 		pager.setOffscreenPageLimit(2);
 		pager.setAdapter(new FragmentAdapter(getSupportFragmentManager()));
 
-		slidingTabLayout.setDistributeEvenly(true);
-		slidingTabLayout.setCustomTabView(R.layout.tab_indicator, android.R.id.text1);
-		slidingTabLayout.setViewPager(pager);
-		slidingTabLayout.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+		tabLayout.setupWithViewPager(pager);
+		pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 			@Override
 			public void onPageSelected(final int position) {
@@ -92,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 					fabAdd.show();
 					mBeaconsFragment.onFragmentResumed();
 				} else {
-					fabAdd.hide(false);
+					fabAdd.hide();
 					if (mBeaconsFragment != null)
 						mBeaconsFragment.onFragmentPaused();
 				}

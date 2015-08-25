@@ -673,7 +673,7 @@ public class DfuFragment extends Fragment implements LoaderManager.LoaderCallbac
 	}
 
 	private void showDeviceScanningDialog() {
-		final ScannerFragment dialog = ScannerFragment.getInstance(getActivity(), null);
+		final ScannerFragment dialog = ScannerFragment.getInstance(null);
 		dialog.show(getChildFragmentManager(), null);
 	}
 

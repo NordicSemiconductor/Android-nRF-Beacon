@@ -21,16 +21,18 @@
  */
 package no.nordicsemi.android.nrfbeacon.scanner;
 
-import java.util.ArrayList;
-
-import no.nordicsemi.android.nrfbeacon.R;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import no.nordicsemi.android.nrfbeacon.R;
+import no.nordicsemi.android.support.v18.scanner.ScanResult;
 
 /**
  * DeviceListAdapter class is list adapter for showing scanned Devices name, address and RSSI image based on RSSI values.
@@ -40,39 +42,43 @@ public class DeviceListAdapter extends BaseAdapter {
 	private static final int TYPE_ITEM = 1;
 	private static final int TYPE_EMPTY = 2;
 
-	private final ArrayList<ExtendedBluetoothDevice> mListValues = new ArrayList<>();
-	private final Context mContext;
-
-	public DeviceListAdapter(Context context) {
-		mContext = context;
-	}
+	private final List<ExtendedBluetoothDevice> mDevices = new ArrayList<>();
 
 	/**
 	 * If such device exists on the bonded device list, this method does nothing. If not then the device is updated (rssi value) or added.
 	 * 
-	 * @param device
-	 *            the device to be added or updated
+	 * @param results scan results
 	 */
-	public void addOrUpdateDevice(ExtendedBluetoothDevice device) {
-		final int indexInNotBonded = mListValues.indexOf(device);
-		if (indexInNotBonded >= 0) {
-			ExtendedBluetoothDevice previousDevice = mListValues.get(indexInNotBonded);
-			previousDevice.rssi = device.rssi;
-			notifyDataSetChanged();
-			return;
+	public void update(final List<ScanResult> results) {
+		for (final ScanResult result : results) {
+			final ExtendedBluetoothDevice device = findDevice(result);
+			if (device == null) {
+				mDevices.add(new ExtendedBluetoothDevice(result));
+			} else {
+				device.name = result.getScanRecord() != null ? result.getScanRecord().getDeviceName() : null;
+				device.rssi = result.getRssi();
+			}
 		}
-		mListValues.add(device);
 		notifyDataSetChanged();
 	}
 
+	private ExtendedBluetoothDevice findDevice(final ScanResult result) {
+		for (final ExtendedBluetoothDevice device : mDevices)
+			if (device.matches(result))
+				return device;
+		return null;
+	}
+
 	public void clearDevices() {
-		mListValues.clear();
-		notifyDataSetChanged();
+		if (mDevices != null) {
+			mDevices.clear();
+			notifyDataSetChanged();
+		}
 	}
 
 	@Override
 	public int getCount() {
-		return mListValues.isEmpty() ? 2 : mListValues.size() + 1; // 1 for title, 1 for empty text
+		return mDevices.isEmpty() ? 2 : mDevices.size() + 1; // 1 for title, 1 for empty text
 	}
 
 	@Override
@@ -80,7 +86,7 @@ public class DeviceListAdapter extends BaseAdapter {
 		if (position == 0)
 			return R.string.scanner_subtitle__not_bonded;
 		else
-			return mListValues.get(position - 1);
+			return mDevices.get(position - 1);
 	}
 
 	@Override
@@ -103,7 +109,7 @@ public class DeviceListAdapter extends BaseAdapter {
 		if (position == 0)
 			return TYPE_TITLE;
 
-		if (position == getCount() - 1 && mListValues.isEmpty())
+		if (position == getCount() - 1 && mDevices.isEmpty())
 			return TYPE_EMPTY;
 
 		return TYPE_ITEM;
@@ -116,7 +122,7 @@ public class DeviceListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View oldView, ViewGroup parent) {
-		final LayoutInflater inflater = LayoutInflater.from(mContext);
+		final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 		final int type = getItemViewType(position);
 
 		View view = oldView;
@@ -146,7 +152,7 @@ public class DeviceListAdapter extends BaseAdapter {
 			final ExtendedBluetoothDevice device = (ExtendedBluetoothDevice) getItem(position);
 			final ViewHolder holder = (ViewHolder) view.getTag();
 			final String name = device.name;
-			holder.name.setText(name != null ? name : mContext.getString(R.string.not_available));
+			holder.name.setText(name != null ? name : parent.getContext().getString(R.string.not_available));
 			holder.address.setText(device.device.getAddress());
 			if (device.rssi != ScannerFragment.NO_RSSI) {
 				final int rssiPercent = (int) (100.0f * (127.0f + device.rssi) / (127.0f + 20.0f));

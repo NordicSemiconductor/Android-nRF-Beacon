@@ -354,7 +354,7 @@ public class UpdateFragment extends Fragment implements ScannerFragmentListener 
 			@Override
 			public void onClick(final View v) {
 				if (mBinder == null) {
-					final ScannerFragment scannerFragment = ScannerFragment.getInstance(getActivity(), BEACON_CONFIG_ADV_UUID);
+					final ScannerFragment scannerFragment = ScannerFragment.getInstance(BEACON_CONFIG_ADV_UUID);
 					scannerFragment.show(getChildFragmentManager(), null);
 				} else
 					mBinder.disconnectAndClose();

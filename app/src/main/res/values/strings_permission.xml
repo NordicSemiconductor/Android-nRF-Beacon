@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ~ Copyright (c) 2015, Nordic Semiconductor
   ~ All rights reserved.
   ~
@@ -19,11 +19,13 @@
   ~ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
   ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  -->
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
 <resources>
-    
-    <style name="Widget.TabTextStyle" parent="@android:style/Widget.Holo.Light.ActionBar.TabText">
-        <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
-    </style>
-    
+	<string name="rationale_title">Permission required</string>
+	<string name="rationale_message">Since Android 6.0 Marshmallow system requires granting access to device\'s location in order to scan for Bluetooth Smart devices.
+      \n\nBeacons may be used to determine the phone\'s and user\'s location.</string>
+	<string name="rationale_request">Proceed</string>
+	<string name="rationale_cancel">Cancel</string>
+	<string name="rationale_permission_denied">Permission denied.</string>
 </resources>
