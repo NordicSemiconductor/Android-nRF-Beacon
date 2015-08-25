@@ -224,7 +224,7 @@
     <string name="dfu_settings_dfu_packets_receipt_notification_label">Packets receipt notification procedure</string>
     <string name="dfu_settings_dfu_number_of_packets_label">Number of packets</string>
     <string name="dfu_settings_dfu_mbr_size">MBR size</string>
-    <string name="dfu_settings_dfu_mbr_size_title">MBR size (default 4096 = 0x1000)</string>
+    <string name="dfu_settings_dfu_mbr_size_title">MBR size (4096 on nRF51, 12288 on nRF52)</string>
 	<string name="dfu_settings_dfu_keep_bond">Keep bond information</string>
     <string name="dfu_settings_dfu_about">About DFU</string>
     <string name="dfu_settings_dfu_about_summary">DFU documentation on Nordic\'s Developer Zone</string>

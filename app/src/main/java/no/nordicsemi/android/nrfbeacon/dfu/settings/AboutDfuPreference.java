@@ -42,7 +42,7 @@ public class AboutDfuPreference extends Preference {
 	@Override
 	protected void onClick() {
 		final Context context = getContext();
-		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://developer.nordicsemi.com/nRF51_SDK/nRF51_SDK_v8.x.x/doc/8.1.0/s110/html/a00084.html"));
+		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk52.v0.9.1%2Fexamples_ble_dfu.html&cp=4_0_0_4_2"));
 		intent.addCategory(Intent.CATEGORY_DEFAULT);
 
 		// is browser

@@ -126,8 +126,8 @@ public class ScannerFragment extends DialogFragment {
 				dismiss();
 
 				final ScannerFragmentListener listener = (ScannerFragmentListener) getParentFragment();
-				final ScanResult device = (ScanResult) mAdapter.getItem(position);
-				listener.onDeviceSelected(device.getDevice(), device.getScanRecord() != null ? device.getScanRecord().getDeviceName() : getString(R.string.not_available));
+				final ExtendedBluetoothDevice device = (ExtendedBluetoothDevice) mAdapter.getItem(position);
+				listener.onDeviceSelected(device.device, device.name != null ? device.name : getString(R.string.not_available));
 			}
 		});
 
