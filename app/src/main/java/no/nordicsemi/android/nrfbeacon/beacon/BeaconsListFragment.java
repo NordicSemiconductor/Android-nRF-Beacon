@@ -21,17 +21,6 @@
  */
 package no.nordicsemi.android.nrfbeacon.beacon;
 
-import java.util.UUID;
-
-import net.dinglisch.android.tasker.TaskerIntent;
-import no.nordicsemi.android.beacon.Beacon;
-import no.nordicsemi.android.beacon.BeaconRegion;
-import no.nordicsemi.android.beacon.BeaconServiceConnection;
-import no.nordicsemi.android.beacon.Proximity;
-import no.nordicsemi.android.nrfbeacon.R;
-import no.nordicsemi.android.nrfbeacon.beacon.adapter.BeaconAdapter;
-import no.nordicsemi.android.nrfbeacon.database.BeaconContract;
-import no.nordicsemi.android.nrfbeacon.database.DatabaseHelper;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.ActivityNotFoundException;
@@ -45,11 +34,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import net.dinglisch.android.tasker.TaskerIntent;
+
+import java.util.UUID;
+
+import no.nordicsemi.android.beacon.Beacon;
+import no.nordicsemi.android.beacon.BeaconRegion;
+import no.nordicsemi.android.beacon.BeaconServiceConnection;
+import no.nordicsemi.android.beacon.Proximity;
+import no.nordicsemi.android.nrfbeacon.R;
+import no.nordicsemi.android.nrfbeacon.beacon.adapter.BeaconAdapter;
+import no.nordicsemi.android.nrfbeacon.database.BeaconContract;
+import no.nordicsemi.android.nrfbeacon.database.DatabaseHelper;
 
 public class BeaconsListFragment extends ListFragment implements BeaconServiceConnection.BeaconsListener, BeaconServiceConnection.RegionListener {
 	private BeaconsFragment mParentFragment;
@@ -222,11 +225,11 @@ public class BeaconsListFragment extends ListFragment implements BeaconServiceCo
 		}
 		case BeaconContract.ACTION_ALARM: {
 			final Uri alarm = RingtoneManager.getActualDefaultRingtoneUri(getActivity(), RingtoneManager.TYPE_ALARM);
-			final Notification notification = new Notification.Builder(getActivity()).setContentTitle(getString(R.string.alarm_notification_title))
+			final Notification notification = new NotificationCompat.Builder(getActivity()).setContentTitle(getString(R.string.alarm_notification_title))
 					.setContentText(getString(R.string.alarm_notification_message, cursor.getString(1 /* NAME */))).setSmallIcon(R.drawable.stat_sys_nrf_beacon).setAutoCancel(true)
 					.setOnlyAlertOnce(true).setSound(alarm, AudioManager.STREAM_ALARM).build();
 			final NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-			notificationManager.notify(1, notification);
+			notificationManager.notify(2, notification); // ID 1 is used by the BeaconService
 			break;
 		}
 		case BeaconContract.ACTION_URL: {

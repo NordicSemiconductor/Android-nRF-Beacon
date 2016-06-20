@@ -196,7 +196,7 @@ public class ScannerFragment extends DialogFragment {
 
 		final BluetoothLeScannerCompat scanner = BluetoothLeScannerCompat.getScanner();
 		final ScanSettings settings = new ScanSettings.Builder()
-				.setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).setReportDelay(1000).setUseHardwareBatchingIfSupported(false).build();
+				.setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).setReportDelay(1000).setUseHardwareBatchingIfSupported(false).setUseHardwareFilteringIfSupported(false).build();
 		final List<ScanFilter> filters = new ArrayList<>();
 		filters.add(new ScanFilter.Builder().setServiceUuid(mUuid).build());
 		scanner.startScan(filters, settings, scanCallback);

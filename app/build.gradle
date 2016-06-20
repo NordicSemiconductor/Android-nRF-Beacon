@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "no.nordicsemi.android.nrfbeacon"
         minSdkVersion 18
         targetSdkVersion 23
-        versionCode 15
-        versionName '1.4.2'
+        versionCode 16
+        versionName '1.4.3'
     }
     buildTypes {
         release {
@@ -28,8 +28,8 @@ repositories{
 
 dependencies {
     compile 'no.nordicsemi.android.beacon.common:nrf-beacon-lib-v2.0@aar'
-    compile 'com.android.support:appcompat-v7:23.0.0'
-    compile 'com.android.support:design:23.0.0'
-    compile 'no.nordicsemi.android.support.v18:scanner:0.1.1'
-    compile project(':dfu')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'no.nordicsemi.android.support.v18:scanner:0.1.2'
+    compile 'no.nordicsemi.android:dfu:0.6.2'
 }

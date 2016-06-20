@@ -41,11 +41,12 @@
             <android.support.design.widget.TabLayout
                 android:id="@+id/sliding_tabs"
                 android:layout_width="360dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:tabSelectedTextColor="@color/tabSelectedTextColor"
                 app:tabTextColor="@color/tabTextColor"
                 app:tabIndicatorColor="@color/tabIndicatorColor"
                 app:tabGravity="fill"
+                app:tabIndicatorHeight="3dp"
                 app:tabMode="fixed" />
 		</android.support.v7.widget.Toolbar>
 
