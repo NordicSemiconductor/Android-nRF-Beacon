@@ -6,10 +6,7 @@ The application allows you to register actions that will be triggered when a spe
 
 ### Dependencies
 
-In order to compile the project the **DFU Library is required**. This project may be found here: https://github.com/NordicSemiconductor/Android-DFU-Library.
-Please clone this project and the Android-DFU-Library to the same root folder, name the DFU library folder *DFULibrary*. The dependency is already configured in the gradle and set to the *..:DFULibrary:dfu* module.
-
-![Projects in file explorer](resources/file_structure.png)
+nRF Beacon app depends on DFU Library, which may be found here: https://github.com/NordicSemiconductor/Android-DFU-Library.
 
 On Android 4.3 and 4.4.x the application requires the nRF Beacon Service to be installed on the device. It may be downloaded from [Google Play](https://play.google.com/store/apps/details?id=no.nordicsemi.android.beacon.service). Since Android 5 (Lollipop) the service has been built into the *nrf-beacon-lib-v2.0.aar* library and using Android native API. After updating the phone to Android 5+ the nRF Beacon Service may be removed from the phone. The source code of this library is attached in the app/sources folder.
 
