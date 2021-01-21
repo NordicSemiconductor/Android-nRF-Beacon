@@ -1,3 +1,9 @@
+# Deprecated
+
+⛔️ This repository is deprecated and no longer maintained ⛔️ 
+
+For our reference code check out [nRF Blinky](https://github.com/NordicSemiconductor/Android-nRF-Blinky).
+
 # nRF Beacon
 
 The nRF Beacon application lets you explore the full range of possibilities for beacons using Bluetooth Smart technology. The application has been designed to demonstrate all features of the nRF8122 Bluetooth® Smart Beacon Kit. It works partially with beacons from other manufacturers as well.
